@@ -17,12 +17,13 @@ p384 = { version = "0.13.0", features = ["serde", "ecdh"] }
 rand = { version = "0.8.5", features = ["getrandom"] }
 serde = { version = "1.0", features = ["derive"] }
 serde_cbor = { version = "0.11.2", features = ["tags"] }
+schemars = {git = "https://github.com/jetuk/schemars.git",features = ["time"],branch = "time-crate"}
 serde_json = "1.0"
 sha2 = "0.10.6"
 thiserror = "1.0"
 elliptic-curve = "0.13.1"
 hkdf = "0.12.3"
-hex-literal = "0.3.4"
+hex-literal = "0.4"
 aes-gcm = "0.10.1"
 hmac = "0.12.1"
 aes = "0.8.2"
@@ -31,16 +32,16 @@ uuid = { version = "1.3", features = ["v1", "std", "rng", "serde"] }
 time = { version = "0.3.20", features = ["formatting", "parsing", "macros"] }
 zeroize = { version = "1.5", features = ["zeroize_derive"] }
 signature = { version = "2.0.0", features = ["std"] }
-async-signature = "0.3.0"
+async-signature = "0.4.0"
 #tracing = "0.1"
 base64 = "0.13"
 pem-rfc7468 = "0.7.0"
-x509-cert = { version = "0.1.1", features = ["pem"] }
+x509-cert = { version = "0.1", features = ["pem"] }
 
 ssi-jwk = { version = "0.1" }
 isomdl-macros = { version = "0.1.0", path = "macros" }
 clap = { version = "4", features = ["derive"] }
-clap-stdin = "0.2.1"
+clap-stdin = "0.4"
 
 [dependencies.cose-rs]
 git = "https://github.com/spruceid/cose-rs"

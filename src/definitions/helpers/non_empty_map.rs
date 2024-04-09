@@ -1,7 +1,8 @@
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use std::{collections::BTreeMap, ops::Deref};
 
-#[derive(Debug, Clone, Deserialize, Serialize, PartialEq, Eq)]
+#[derive(Debug, Clone,JsonSchema, Deserialize, Serialize, PartialEq, Eq)]
 #[serde(try_from = "BTreeMap<K, V>", into = "BTreeMap<K, V>")]
 pub struct NonEmptyMap<K: Ord + Eq + Clone, V: Clone>(BTreeMap<K, V>);
 

@@ -1,3 +1,4 @@
+use schemars::JsonSchema;
 use serde::{
     ser::{Error as SerError, Serializer},
     Deserialize, Serialize,
@@ -9,7 +10,7 @@ use time::{
     format_description::well_known::Rfc3339, OffsetDateTime, UtcOffset,
 };
 
-#[derive(Clone, Debug, Deserialize)]
+#[derive(Clone,JsonSchema, Debug, Deserialize)]
 #[serde(try_from = "CborValue")]
 pub struct ValidityInfo {
     pub signed: OffsetDateTime,

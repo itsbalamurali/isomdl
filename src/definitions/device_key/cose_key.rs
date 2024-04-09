@@ -1,6 +1,7 @@
 use aes::cipher::generic_array::{typenum::U8, GenericArray};
 use cose_rs::algorithm::Algorithm;
 use p256::EncodedPoint;
+use schemars::JsonSchema;
 use serde::{Deserialize, Serialize};
 use serde_cbor::Value as CborValue;
 use ssi_jwk::JWK;
@@ -8,7 +9,7 @@ use std::collections::BTreeMap;
 
 /// An implementation of RFC-8152 [COSE_Key](https://datatracker.ietf.org/doc/html/rfc8152#section-13)
 /// restricted to the requirements of ISO/IEC 18013-5:2021.
-#[derive(Debug, Clone, Serialize, Deserialize, PartialEq, Eq)]
+#[derive(Debug, Clone, JsonSchema, Serialize, Deserialize, PartialEq, Eq)]
 #[serde(try_from = "CborValue", into = "CborValue")]
 pub enum CoseKey {
     EC2 { crv: EC2Curve, x: Vec<u8>, y: EC2Y },
@@ -16,14 +17,14 @@ pub enum CoseKey {
 }
 
 /// The sign bit or value of the y-coordinate for the EC point.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone,JsonSchema, PartialEq, Eq)]
 pub enum EC2Y {
     Value(Vec<u8>),
     SignBit(bool),
 }
 
 /// The RFC-8152 identifier of the curve, for EC2 key type.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone,JsonSchema, PartialEq, Eq)]
 pub enum EC2Curve {
     P256,
     P384,
@@ -32,7 +33,7 @@ pub enum EC2Curve {
 }
 
 /// The RFC-8152 identifier of the curve, for OKP key type.
-#[derive(Debug, Clone, PartialEq, Eq)]
+#[derive(Debug, Clone,JsonSchema, PartialEq, Eq)]
 pub enum OKPCurve {
     X25519,
     X448,
